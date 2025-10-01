@@ -15,13 +15,23 @@ app.post("/api/contact", async (req, res) => {
     const { name, email, subject, message } = req.body;
 
     // Setup transporter
+    // const transporter = nodemailer.createTransport({
+    //   service: "gmail",
+    //   auth: {
+    //     user: process.env.EMAIL_USER,
+    //     pass: process.env.EMAIL_PASS,
+    //   },
+    // });
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // true for 465
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
+    }
+  });
+
 
     // Mail options
     const mailOptions = {
