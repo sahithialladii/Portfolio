@@ -2,48 +2,109 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
+// const Contact = () => {
+//   // State for form inputs
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     message: "",
+//   });
+
+//   const [loading, setLoading] = useState(false);
+
+//   // Handle input changes
+//   const handleChange = (e) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
+
+//   // Handle form submit
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
+
+//     try {
+//       // const res = await fetch("http://localhost:5000/api/contact", {
+//       const res = await fetch("https://portfolio1-z6xb.onrender.com/api/contact", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(formData),
+//       });
+
+//       const data = await res.json();
+
+//       if (data.success) {
+//         alert("✅ Message sent successfully!");
+//         setFormData({ name: "", email: "", message: "" }); // reset form
+//       } else {
+//         alert("❌ Failed to send message. Please try again.");
+//       }
+//     } catch (error) {
+//       alert("⚠️ Error: Could not send message.");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
 const Contact = () => {
-  // State for form inputs
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+const [formData, setFormData] = useState({
+name: "",
+email: "",
+subject: "",
+message: "",
+});
 
-  const [loading, setLoading] = useState(false);
+const [loading, setLoading] = useState(false);
 
-  // Handle input changes
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+const handleChange = (e) => {
+setFormData({
+...formData,
+[e.target.name]: e.target.value,
+});
+};
 
-  // Handle form submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+const handleSubmit = async (e) => {
+e.preventDefault();
 
-    try {
-      // const res = await fetch("http://localhost:5000/api/contact", {
-      const res = await fetch("https://portfolio1-z6xb.onrender.com/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
 
-      const data = await res.json();
+setLoading(true);
 
-      if (data.success) {
-        alert("✅ Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" }); // reset form
-      } else {
-        alert("❌ Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      alert("⚠️ Error: Could not send message.");
-    } finally {
-      setLoading(false);
+try {
+  const res = await fetch(
+    // "https://portfolio1-z6xb.onrender.com/api/contact",
+    "http://localhost:5000/api/contact",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
     }
-  };
+  );
+
+  const data = await res.json();
+
+  if (res.ok && data.success) {
+    alert("✅ Message sent successfully!");
+
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+  } else {
+    alert(data.message || "❌ Failed to send message.");
+  }
+} catch (error) {
+  console.error(error);
+  alert("⚠️ Server error. Please try again later.");
+} finally {
+  setLoading(false);
+}
+
+
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-white flex items-center justify-center p-6">
