@@ -71,7 +71,8 @@ setLoading(true);
 try {
   const res = await fetch(
     // "https://portfolio1-z6xb.onrender.com/api/contact",
-    "http://localhost:5000/api/contact",
+    // "http://localhost:5000/api/contact",
+    "https://portfolio-backend-msjt.onrender.com/api/contact",
     {
       method: "POST",
       headers: {

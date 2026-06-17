@@ -141,9 +141,20 @@ const app = express();
 //     credentials: true,
 //   })
 // );
+
+
+// app.use(
+//   cors({
+//     origin: "*",
+//   })
+// );
 app.use(
   cors({
-    origin: "*",
+    origin: [
+      "http://localhost:5173",
+      "https://your-vercel-url.vercel.app"
+    ],
+    methods: ["GET", "POST"],
   })
 );
 app.use(express.json());
