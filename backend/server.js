@@ -131,7 +131,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://portfolio-pvm0oeht6-sahithi-alladis-projects.vercel.app/",
+      "https://portfolio-pvm0oeht6-sahithi-alladis-projects.vercel.app",
     ],
     methods: ["GET", "POST"],
   })
