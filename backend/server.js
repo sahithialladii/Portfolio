@@ -13,10 +13,13 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // Middleware
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://portfolio-xz5k.vercel.app/",
-    ],
+    origin: 
+    // [
+    //   "http://localhost:5173",
+    //   "https://portfolio-xz5k.vercel.app/",
+    // ]
+    true
+    ,
     methods: ["GET", "POST"],
   })
 );
