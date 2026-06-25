@@ -139,7 +139,6 @@
 
 
 import React from "react";
-import {useState} from "react";
 import car from "../assets/img/car.jpeg";
 import AIQPG from "../assets/img/AIQPG.jpg";
 import plant from "../assets/img/plannt.jpg";
@@ -147,7 +146,6 @@ import respiratory from "../assets/img/respiratory.png";
 import bookmyshow from "../assets/img/bookmyshow.png";
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
   const projects = [
 {
 title: 'Smart Respiratory Health Monitoring System',
@@ -219,255 +217,123 @@ demo:'https://huggingface.co/spaces/AlladiSahithi/festival-log'
         </div>
 
         {/* Projects Grid */}
-        <div
-  key={index}
-  className="
-    group
-    bg-white/70
-    backdrop-blur-lg
-    rounded-3xl
-    overflow-hidden
-    shadow-lg
-    hover:shadow-2xl
-    hover:-translate-y-2
-    transition-all
-    duration-500
-    border
-    border-white/50
-    flex
-    flex-col
-    h-[650px]
-  "
->
-  {/* Image */}
-  <div className="overflow-hidden">
-    <img
-      src={project.image}
-      alt={project.title}
-      className="
-        w-full
-        h-56
-        object-cover
-        group-hover:scale-105
-        transition
-        duration-700
-      "
-    />
-  </div>
-
-  {/* Content */}
-  <div className="p-5 flex flex-col flex-grow">
-    <h2 className="text-xl font-bold text-gray-800 mb-2">
-      {project.title}
-    </h2>
-
-    <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-4">
-      {project.description}
-    </p>
-
-    {/* Tech Stack */}
-    <div className="flex flex-wrap gap-2 mb-4">
-      {project.tech.map((tech, idx) => (
-        <span
-          key={idx}
-          className="
-            bg-indigo-100
-            text-indigo-700
-            px-3
-            py-1
-            rounded-full
-            text-xs
-            font-semibold
-          "
-        >
-          {tech}
-        </span>
-      ))}
-    </div>
-
-    {/* Buttons */}
-    <div className="mt-auto flex flex-col gap-2">
-      <div className="flex gap-2">
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            flex-1
-            text-center
-            bg-indigo-600
-            hover:bg-indigo-700
-            text-white
-            py-2
-            rounded-xl
-            transition
-          "
-        >
-          GitHub
-        </a>
-
-        {project.demo && (
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              flex-1
-              text-center
-              border-2
-              border-indigo-600
-              text-indigo-600
-              hover:bg-indigo-600
-              hover:text-white
-              py-2
-              rounded-xl
-              transition
-            "
-          >
-            Live Demo
-          </a>
-        )}
-      </div>
-
-      <button
-        onClick={() => setSelectedProject(project)}
-        className="
-          w-full
-          bg-gray-100
-          hover:bg-gray-200
-          text-gray-700
-          py-2
-          rounded-xl
-          font-medium
-          transition
-        "
-      >
-        View Details
-      </button>
-    </div>
-  </div>
-</div>
-{selectedProject && (
-  <div
-    className="
-      fixed
-      inset-0
-      bg-black/60
-      backdrop-blur-sm
-      flex
-      items-center
-      justify-center
-      z-50
-      p-4
-    "
-  >
-    <div
-      className="
-        bg-white
-        rounded-3xl
-        max-w-3xl
-        w-full
-        max-h-[90vh]
-        overflow-y-auto
-        shadow-2xl
-      "
-    >
-      <img
-        src={selectedProject.image}
-        alt={selectedProject.title}
-        className="w-full h-72 object-cover"
-      />
-
-      <div className="p-8">
-        <div className="flex justify-between items-start mb-4">
-          <h2 className="text-3xl font-bold text-gray-800">
-            {selectedProject.title}
-          </h2>
-
-          <button
-            onClick={() => setSelectedProject(null)}
-            className="
-              text-gray-500
-              hover:text-red-500
-              text-3xl
-              font-bold
-            "
-          >
-            ×
-          </button>
-        </div>
-
-        <h3 className="font-semibold text-lg mb-2 text-indigo-600">
-          Project Overview
-        </h3>
-
-        <p className="text-gray-700 leading-relaxed mb-6">
-          {selectedProject.description}
-        </p>
-
-        <h3 className="font-semibold text-lg mb-2 text-indigo-600">
-          Technologies Used
-        </h3>
-
-        <div className="flex flex-wrap gap-2 mb-6">
-          {selectedProject.tech.map((tech, idx) => (
-            <span
-              key={idx}
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <div
+              key={index}
               className="
-                bg-indigo-100
-                text-indigo-700
-                px-3
-                py-1
-                rounded-full
-                text-sm
+                group
+                bg-white/70
+                backdrop-blur-lg
+                rounded-3xl
+                overflow-hidden
+                shadow-lg
+                hover:shadow-2xl
+                hover:-translate-y-3
+                transition-all
+                duration-500
+                border
+                border-white/50
+                flex
+                flex-col
               "
             >
-              {tech}
-            </span>
+              {/* Image */}
+              <div className="overflow-hidden relative">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="
+                    w-full
+                    h-56
+                    object-cover
+                    group-hover:scale-110
+                    transition-transform
+                    duration-700
+                  "
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 flex flex-col flex-grow">
+                <h2 className="text-xl font-bold text-gray-800 mb-3">
+                  {project.title}
+                </h2>
+
+                <p className="text-gray-600 text-sm leading-relaxed line-clamp-5 mb-5">
+                  {project.description}
+                </p>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tech.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="
+                        bg-indigo-100
+                        text-indigo-700
+                        px-3
+                        py-1
+                        rounded-full
+                        text-xs
+                        font-semibold
+                      "
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Buttons */}
+                <div className="mt-auto flex gap-3">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      flex-1
+                      text-center
+                      bg-indigo-600
+                      hover:bg-indigo-700
+                      text-white
+                      py-2.5
+                      rounded-xl
+                      font-medium
+                      transition
+                    "
+                  >
+                    GitHub
+                  </a>
+
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="
+                        flex-1
+                        text-center
+                        border-2
+                        border-indigo-600
+                        text-indigo-600
+                        hover:bg-indigo-600
+                        hover:text-white
+                        py-2.5
+                        rounded-xl
+                        font-medium
+                        transition
+                      "
+                    >
+                      Live Demo
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
-
-        <div className="flex gap-4">
-          <a
-            href={selectedProject.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              bg-indigo-600
-              text-white
-              px-6
-              py-3
-              rounded-xl
-              hover:bg-indigo-700
-            "
-          >
-            GitHub Repository
-          </a>
-
-          {selectedProject.demo && (
-            <a
-              href={selectedProject.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                border-2
-                border-indigo-600
-                text-indigo-600
-                px-6
-                py-3
-                rounded-xl
-                hover:bg-indigo-600
-                hover:text-white
-              "
-            >
-              Live Demo
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-  </div>
-)}
       </div>
     </section>
   );
