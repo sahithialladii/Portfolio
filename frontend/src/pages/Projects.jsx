@@ -170,6 +170,7 @@ image: respiratory
       tech: ['React', 'Tailwind', 'Routing'],
       link: 'https://github.com/SiriSamala/CarStore-Project',
       image: car,
+      demo:'https://car-store-client-new.vercel.app/'
     },
     {
 title: 'MovieTicketPro - Movie Ticket Booking System',
