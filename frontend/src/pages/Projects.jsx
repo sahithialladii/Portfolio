@@ -207,14 +207,8 @@ demo:'https://huggingface.co/spaces/AlladiSahithi/festival-log'
         {/* Header */}
         <div className="text-center mb-14">
           <h1 className="text-5xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
-            My Projects
+            My Recent Work
           </h1>
-
-          <p className="mt-4 text-gray-600 text-lg max-w-2xl mx-auto">
-            A collection of AI, Machine Learning, Healthcare, Full Stack and
-            Web Development projects that showcase my technical skills and
-            problem-solving abilities.
-          </p>
         </div>
 
         {/* Projects Grid */}
